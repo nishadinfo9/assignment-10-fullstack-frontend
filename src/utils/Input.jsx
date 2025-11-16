@@ -1,5 +1,4 @@
 import React from "react";
-import icon from "../assets/complete.png";
 
 const Input = ({ label, type = "text", error, className = "", ...props }) => {
   return (
