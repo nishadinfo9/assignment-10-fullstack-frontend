@@ -9,7 +9,7 @@ const Select = ({ label, error, options = [], ...props }) => {
       <select
         defaultValue={""}
         {...props}
-        className="select  w-full bg-[#0f172a] border-[#334155] focus:border-pink-500 text-gray-100"
+        className="select w-full bg-[#0f172a] border-[#334155] focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
       >
         <option value="" disabled>
           Select {label}
