@@ -7,8 +7,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const navItem = [
-    { name: "Add Habits", path: "/add" },
-    { name: "My Habits", path: "/my-habits" },
+    { name: "add-habits", path: "/add" },
+    { name: "my-habits", path: "/my-habits" },
   ];
 
   const logoutHandler = () => {};

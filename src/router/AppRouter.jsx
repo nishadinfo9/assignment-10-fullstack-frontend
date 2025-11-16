@@ -5,6 +5,9 @@ import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
 import Layout from "../layout/Layout";
 import NotFound from "../pages/NotFound/NotFound";
+import AddHabits from "../pages/AddHabits/AddHabits";
+import MyHabits from "../pages/MyHabits/myHabits";
+import AllHabits from "../pages/AllHabits/AllHabits";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -14,7 +17,12 @@ const AppRouter = () => {
     {
       path: "/",
       element: <Layout />,
-      children: [{ path: "/", element: <Home /> }],
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/add-habits", element: <AddHabits /> },
+        { path: "/my-habits", element: <MyHabits /> },
+        { path: "/all-habits", element: <AllHabits /> },
+      ],
     },
   ]);
 
