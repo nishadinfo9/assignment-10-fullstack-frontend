@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Input from "../../utils/Input";
 import Button from "../../utils/Button";
 import GoogleBtn from "../../utils/GoogleBtn";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { registerUser, googleUserLogin } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -12,9 +16,18 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const registerHandler = () => {};
+  const registerHandler = async (data) => {
+    if (!data) return;
+    const { email, password } = data;
+    await registerUser(email, password);
+    reset();
+    navigate("/");
+  };
 
-  const googleLoginHandler = () => {};
+  const googleLoginHandler = async () => {
+    await googleUserLogin();
+    navigate("/");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white px-4">

@@ -4,9 +4,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const images = [
-  "/images/image1.jpg",
-  "/images/image2.jpg",
-  "/images/image3.jpg",
+  "/images/banner1.jpg",
+  "/images/banner2.jpg",
+  "/images/banner3.jpg",
 ];
 
 const SlideBar = () => {

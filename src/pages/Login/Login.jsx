@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Input from "../../utils/Input";
 import Button from "../../utils/Button";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, loginUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -11,7 +16,14 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const loginHandler = () => {};
+  const loginHandler = async (data) => {
+    if (!data) return;
+    console.log(data);
+    const { email, password } = data;
+    await loginUser(email, password);
+    reset();
+    navigate(location.state || "/");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white px-4">

@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const navItem = [
-    { name: "add-habits", path: "/add" },
-    { name: "my-habits", path: "/my-habits" },
+    { name: "Add Habits", path: "/add-habits" },
+    { name: "My Habits", path: "/my-habits" },
   ];
 
-  const logoutHandler = () => {};
+  const logoutHandler = async () => {
+    await logoutUser();
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -24,15 +26,15 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to={"/"}>Home</Link>
+            <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <Link to={"/all-habits"}>All Habits</Link>
+            <NavLink to={"/all-habits"}>All Habits</NavLink>
           </li>
           {user &&
             navItem.map((item, i) => (
               <li key={i}>
-                <Link to={item.path}>{item.name}</Link>
+                <NavLink to={item.path}>{item.name}</NavLink>
               </li>
             ))}
         </ul>
