@@ -20,7 +20,7 @@ const Card = ({ habit }) => {
       <div className="p-5 flex flex-col gap-3">
         {/* Title */}
         <Link to={`/habits/${habit._id}`}>
-          <h2 className="text-lg text-white font-bold text-gray-900 hover:text-primary transition">
+          <h2 className="text-lg text-white font-bold hover:text-primary transition">
             {habit.title}
           </h2>
         </Link>

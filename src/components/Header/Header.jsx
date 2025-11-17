@@ -18,10 +18,14 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4">
-      <div className="navbar-start">
-        <Link to={"/"} className="btn btn-ghost text-xl normal-case">
-          Habit Tracker
+    <div className="navbar bg-base-100 shadow-sm px-10">
+      <div className="navbar-start ">
+        <Link to={"/"} className="">
+          <img
+            className="w-10 h-10 rounded-full"
+            src="./images/logo.png"
+            alt="logo"
+          />
         </Link>
       </div>
 

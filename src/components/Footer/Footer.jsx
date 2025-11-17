@@ -1,21 +1,36 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footer sm:footer-horizontal footer-vertical bg-base-300 text-base-content p-10">
       <aside className="grid-cols-2 md:grid-flow-col grid-flow-col items-center justify-center">
-        <h2 className="text-xl font-bold">Habits Tracker</h2>
+        <Link to={"/"}>
+          <img
+            className="w-10 h-10 rounded-full"
+            src="./images/logo.png"
+            alt="logo"
+          />
+        </Link>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>
         <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
+        <Link to={"/all-habits"} className="link link-hover">
+          All Habits
+        </Link>
+        <Link to={"/my-habits"} className="link link-hover">
+          My Habits
+        </Link>
       </nav>
       <nav>
         <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">Contact us</a>
-        <a className="link link-hover">Terms &amp; Conditions,</a>
+        <Link to={"/"} className="link link-hover">
+          Contact us
+        </Link>
+        <Link to={"/"} className="link link-hover">
+          Terms &amp; Conditions,
+        </Link>
       </nav>
       <nav>
         <h6 className="footer-title">Social</h6>
