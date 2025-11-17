@@ -80,7 +80,7 @@ export const deleteHabits = async (id, token) => {
 
 export const getHabitsById = async (id, token) => {
   const res = await fetch(
-    `https://assignment-10-fullstack-backend-production.up.railway.app/${id}`,
+    `https://assignment-10-fullstack-backend-production.up.railway.app/habits/${id}`,
     {
       method: "GET",
       headers: { authorization: `Bearer ${token}` },
