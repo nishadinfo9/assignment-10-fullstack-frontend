@@ -52,7 +52,7 @@ export const createHabits = async (data, token) => {
 
 export const updateHabits = async (id, data, token) => {
   const res = await fetch(
-    `https://assignment-10-fullstack-backend-production.up.railway.app/${id}`,
+    `https://assignment-10-fullstack-backend-production.up.railway.app/habits/update/${id}`,
     {
       method: "PATCH",
       headers: {
