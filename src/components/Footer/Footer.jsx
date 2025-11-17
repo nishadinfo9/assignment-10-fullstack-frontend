@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
-      <aside className="grid-flow-col items-center justify-center">
+    <footer className="footer sm:footer-horizontal footer-vertical bg-base-300 text-base-content p-10">
+      <aside className="grid-cols-2 md:grid-flow-col grid-flow-col items-center justify-center">
         <h2 className="text-xl font-bold">Habits Tracker</h2>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>

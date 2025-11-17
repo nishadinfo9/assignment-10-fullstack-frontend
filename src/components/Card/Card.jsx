@@ -1,38 +1,61 @@
+import { Link } from "react-router-dom";
 import React from "react";
 
-const Card = ({}) => {
+const Card = ({ habit }) => {
   return (
-    <div className="bg-gray-800 shadow-lg rounded-xl p-5 flex flex-col justify-between hover:bg-gray-700 transition-colors duration-300">
-      <div>
-        <Link to={`/habits/${habit._id}`}>
-          <h2 className="text-xl font-semibold text-white">{habit.title}</h2>
-        </Link>
-        <p className="text-gray-300 mt-1">{habit.description}</p>
-        <div className="mt-3">
-          {habit.categories.map((cat, index) => (
-            <span
-              key={index}
-              className="text-xs bg-gray-700 text-gray-200 px-2 py-1 rounded-full mr-2"
-            >
-              {cat}
-            </span>
-          ))}
-        </div>
+    <div className="bg-base-100 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+      {/* Image */}
+      <div className="h-40 w-full overflow-hidden">
+        <img
+          src={
+            habit.image ||
+            "https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+          alt={habit.title}
+          className="w-full  h-full object-cover"
+        />
       </div>
-      <div className="mt-4 flex flex-col gap-2">
-        <span className="text-gray-400 text-xs">
-          Last Done:{" "}
-          {/* {habit.completionHistory.length > 0
-            ? habit.completionHistory.slice(-1)[0]
-            : "Not yet"} */}
-        </span>
 
-        <button
-          //onClick={() => handleMarkComplete(habit._id)}
-          className="cursor-pointer bg-green-500 hover:bg-green-600 text-white text-sm font-semibold px-3 py-1 rounded transition-colors"
+      {/* Content */}
+      <div className="p-5 flex flex-col gap-3">
+        {/* Title */}
+        <Link to={`/habits/${habit._id}`}>
+          <h2 className="text-lg text-white font-bold text-gray-900 hover:text-primary transition">
+            {habit.title}
+          </h2>
+        </Link>
+
+        {/* Description */}
+        <p className="text-gray-500 text-sm line-clamp-2">
+          {habit.description}
+        </p>
+
+        {/* Category + Streak */}
+        <div className="flex justify-between items-center">
+          <span className="badge badge-outline badge-primary px-3 py-1 text-xs">
+            {habit.category}
+          </span>
+
+          <span className="badge badge-success px-3 py-1 text-xs">
+            {habit.stack}-day 🔥
+          </span>
+        </div>
+
+        {/* Last Done */}
+        <p className="text-xs text-gray-400 mt-1">
+          Last Done:{" "}
+          {habit.completionHistory.length > 0
+            ? habit.completionHistory.slice(-1)[0]
+            : "Not yet"}
+        </p>
+
+        {/* Button */}
+        <Link
+          to={`/habit-details/${habit._id}`}
+          className="btn btn-success w-full text-white btn-sm mt-2"
         >
-          Mark Complete
-        </button>
+          Get Mark
+        </Link>
       </div>
     </div>
   );

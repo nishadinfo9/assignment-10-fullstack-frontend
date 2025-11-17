@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import HabitCard from "../../components/HabitsCard/HabitsCard";
 import { getHabits, markHabitsComplete } from "../../api/api";
 import { AuthContext } from "../../context/AuthContext";
+import Loader from "../../utils/Loader";
 
 const AllHabits = () => {
   const { user } = useContext(AuthContext);
@@ -41,12 +42,10 @@ const AllHabits = () => {
     }
   };
 
-  completionDate(); //send id
-
-  if (loading) return <p>loading...</p>;
+  if (loading) return <Loader />;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-6 gap-10 p-6">
       {habits.map((habit) => (
         <HabitCard
           key={habit._id}

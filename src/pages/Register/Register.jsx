@@ -8,7 +8,8 @@ import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { registerUser, googleUserLogin } = useContext(AuthContext);
+  const { registerUser, googleUserLogin, updateUserProfile } =
+    useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -17,11 +18,17 @@ const Register = () => {
   } = useForm();
 
   const registerHandler = async (data) => {
-    if (!data) return;
-    const { email, password } = data;
-    await registerUser(email, password);
-    reset();
-    navigate("/");
+    try {
+      if (!data) return;
+      const { email, password, fullName, photoURL } = data;
+      const res = await registerUser(email, password);
+      if (!res) return;
+      await updateUserProfile(fullName, photoURL);
+      reset();
+      navigate("/");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const googleLoginHandler = async () => {

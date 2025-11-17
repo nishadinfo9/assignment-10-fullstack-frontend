@@ -5,8 +5,21 @@ export const getHabits = async () => {
 };
 
 export const markHabitsComplete = async (id, token) => {
-  const res = await fetch(`http://localhost:3000/habits/mark${id}`, {
-    method: "POST",
+  const res = await fetch(`http://localhost:3000/habits/mark/${id}`, {
+    method: "PATCH",
+
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+  return data;
+};
+
+export const markcheckHabits = async (id, token) => {
+  const res = await fetch(`http://localhost:3000/habits/missed/${id}`, {
+    method: "PATCH",
     headers: { authorization: `Bearer ${token}` },
   });
   const data = await res.json();
@@ -16,23 +29,27 @@ export const markHabitsComplete = async (id, token) => {
 export const createHabits = async (data, token) => {
   const res = await fetch("http://localhost:3000/habits", {
     method: "POST",
-    headers: { authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify(data),
   });
-  const data = res.json();
-  return data;
+  const result = await res.json();
+  return result;
 };
 
 export const updateHabits = async (id, data, token) => {
   const res = await fetch(`http://localhost:3000/habits/update/${id}`, {
     method: "PATCH",
     headers: {
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
-      body: JSON.stringify(data),
     },
+    body: JSON.stringify(data),
   });
-  const data = res.json();
-  return data;
+  const result = await res.json();
+  return result;
 };
 
 export const deleteHabits = async (id, token) => {
@@ -59,5 +76,11 @@ export const getMyHabits = async (email, token) => {
     headers: { authorization: `Bearer ${token}` },
   });
   const data = res.json();
+  return data;
+};
+
+export const latestHabits = async () => {
+  const res = await fetch("http://localhost:3000/recent");
+  const data = await res.json();
   return data;
 };

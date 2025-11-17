@@ -1,27 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../components/Container/Container";
 import SlideBar from "../../components/SideBar/SlideBar";
 import Collapse from "../../utils/Collapse";
 import Galary from "../../utils/Galary";
-import ModernGallery from "../../utils/ModernGalary";
+import { latestHabits } from "../../api/api";
+import Card from "../../components/Card/Card";
 
 const Home = () => {
+  const [habits, setHabits] = useState([]);
+
+  useEffect(() => {
+    latestHabits().then((data) => setHabits(data));
+  }, []);
+
   return (
     <Container>
       <SlideBar />
-      <div className="p-6  min-h-screen text-gray-100">
+      <div className="p-6  text-gray-100">
         <h1 className="text-3xl font-bold mb-6 text-white">Habit Tracker</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {/* {data &&
-            data?.data.map((habit) => <Card key={habit._id} habit={habit} />)} */}
+          {habits &&
+            habits.map((habit) => <Card key={habit._id} habit={habit} />)}
         </div>
       </div>
-      <section className="my-30 flex flex-col items-center justify-center">
+      <section className=" flex flex-col items-center justify-center">
         <h2 className="md:text-5xl text-3xl font-extrabold text-center my-20">
           Phone Addiction
         </h2>
 
-        <div className="grid grid-cols-3 gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
           <Galary src="/galary/image1.jpg" />
           <Galary src="/galary/image2.jpg" />
           <Galary src="/galary/image3.jpg" />
@@ -32,7 +39,7 @@ const Home = () => {
       </section>
 
       {/* FAQ Section  */}
-      <div className="w-3xl mx-auto p-10 border-3 border-gray-500 flex flex-col items-center justify-center m-10 rounded-md">
+      <div className="md:w-3xl mx-auto p-10 border-3 border-gray-500 flex flex-col items-center justify-center m-10 rounded-md">
         <h2 className="text-5xl font-bold pb-10 text-gray-300 ">FAQ</h2>
         <Collapse
           question={"Why do habits matter?"}
@@ -53,8 +60,6 @@ const Home = () => {
           }
         />
       </div>
-
-      <ModernGallery />
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-const DailyCalendar = ({ completionHistory }) => {
+const DailyCalendar = ({ completionHistory, onToggleDate }) => {
   const today = new Date();
   const daysInMonth = new Date(
     today.getFullYear(),
@@ -12,16 +12,17 @@ const DailyCalendar = ({ completionHistory }) => {
   });
 
   return (
-    <div className="grid grid-cols-7 gap-3 p-4 bg-base-100 rounded-2xl shadow-md">
+    <div className="grid grid-cols-7 gap-2 p-1 bg-base-100 w-full rounded-2xl shadow-md">
       {dates.map((date, idx) => {
         const iso = date.toISOString().split("T")[0];
-        const completed = completionHistory.includes(iso);
+        const completed = completionHistory?.includes(iso);
 
         return (
           <div
             key={idx}
+            onClick={() => onToggleDate && onToggleDate(iso)}
             className={`
-              w-10 h-10 flex items-center justify-center rounded-full
+              h-8 w-8 flex text-xs items-center justify-center rounded-full
               ${
                 completed
                   ? "bg-green-600 text-white"
