@@ -5,7 +5,6 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const Protected = ({ children }) => {
   const { loading, user } = useContext(AuthContext);
-  console.log("protected", user);
   const location = useLocation();
 
   if (loading) return Loader;
