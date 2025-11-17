@@ -23,7 +23,7 @@ const Header = () => {
         <Link to={"/"} className="">
           <img
             className="w-10 h-10 rounded-full"
-            src="./images/logo.png"
+            src="/images/logo.png"
             alt="logo"
           />
         </Link>

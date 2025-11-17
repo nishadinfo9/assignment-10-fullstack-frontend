@@ -11,7 +11,7 @@ const Protected = ({ children }) => {
   if (loading) return Loader;
   if (user) return children;
 
-  <Navigate state={location.pathname} to={"/login"} replace />;
+  return <Navigate to={"/login"} state={location?.pathname}></Navigate>;
 };
 
 export default Protected;

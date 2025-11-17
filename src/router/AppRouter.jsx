@@ -9,6 +9,7 @@ import AddHabits from "../pages/AddHabits/AddHabits";
 import MyHabits from "../pages/MyHabits/myHabits";
 import AllHabits from "../pages/AllHabits/AllHabits";
 import HabitDetails from "../pages/HabitDetails/HabitDetails";
+import Protected from "../Protected/Protected";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -20,11 +21,39 @@ const AppRouter = () => {
       element: <Layout />,
       children: [
         { path: "/", element: <Home /> },
-        { path: "/add-habits", element: <AddHabits /> },
-        { path: "/edit-habits/:id", element: <AddHabits /> },
-        { path: "/my-habits", element: <MyHabits /> },
+        {
+          path: "/add-habits",
+          element: (
+            <Protected>
+              <AddHabits />
+            </Protected>
+          ),
+        },
+        {
+          path: "/edit-habits/:id",
+          element: (
+            <Protected>
+              <AddHabits />
+            </Protected>
+          ),
+        },
+        {
+          path: "/my-habits",
+          element: (
+            <Protected>
+              <MyHabits />
+            </Protected>
+          ),
+        },
         { path: "/all-habits", element: <AllHabits /> },
-        { path: "/habit-details/:id", element: <HabitDetails /> },
+        {
+          path: "/habit-details/:id",
+          element: (
+            <Protected>
+              <HabitDetails />
+            </Protected>
+          ),
+        },
       ],
     },
   ]);
