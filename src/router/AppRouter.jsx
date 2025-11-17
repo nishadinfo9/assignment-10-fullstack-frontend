@@ -6,7 +6,7 @@ import Home from "../pages/Home/Home";
 import Layout from "../layout/Layout";
 import NotFound from "../pages/NotFound/NotFound";
 import AddHabits from "../pages/AddHabits/AddHabits";
-import MyHabits from "../pages/MyHabits/myHabits";
+import MyHabits from "../pages/MyHabits/MyHabits";
 import AllHabits from "../pages/AllHabits/AllHabits";
 import HabitDetails from "../pages/HabitDetails/HabitDetails";
 import Protected from "../Protected/Protected";

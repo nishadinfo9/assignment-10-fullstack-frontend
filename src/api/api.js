@@ -71,9 +71,12 @@ export const getHabitsById = async (id, token) => {
 };
 
 export const getMyHabits = async (email, token) => {
-  const res = await fetch(`http://localhost:3000/habits?email=${email}`, {
+  const res = await fetch(`http://localhost:3000/my-habits?email=${email}`, {
     method: "GET",
-    headers: { authorization: `Bearer ${token}` },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
   const data = res.json();
   return data;

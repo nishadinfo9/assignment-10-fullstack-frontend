@@ -7,7 +7,7 @@ const Protected = ({ children }) => {
   const { loading, user } = useContext(AuthContext);
   const location = useLocation();
 
-  if (loading) return Loader;
+  if (loading) return <Loader/>;
   if (user) return children;
 
   return <Navigate to={"/login"} state={location?.pathname}></Navigate>;

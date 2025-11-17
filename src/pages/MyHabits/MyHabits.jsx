@@ -8,8 +8,8 @@ const MyHabits = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    getMyHabits().then((data) => setHabits(data));
-  }, [user]);
+    getMyHabits(user.email, user.accessToken).then((data) => setHabits(data));
+  }, [user.accessToken]);
 
   const editHandler = async (id) => {};
 
